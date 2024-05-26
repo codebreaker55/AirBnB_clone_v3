@@ -112,7 +112,7 @@ class TestStateInstances(unittest.TestCase):
         actual = 1
         try:
             serialized = json.dumps(self.state_json)
-        except:
+        except Exception:
             actual = 0
         self.assertTrue(1 == actual)
 
@@ -135,6 +135,7 @@ class TestStateInstances(unittest.TestCase):
             acual = ''
         expected = "betty"
         self.assertEqual(expected, actual)
+
 
 if __name__ == '__main__':
     unittest.main
