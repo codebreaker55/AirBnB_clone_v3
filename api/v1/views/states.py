@@ -1,4 +1,6 @@
-ndles all default RESTFul API actions for State Object
+#!/usr/bin/python3
+"""
+handles all default RESTFul API actions for State Object
 """
 from api.v1.views import app_views
 from models import storage
