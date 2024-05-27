@@ -4,17 +4,13 @@ Flask App
 """
 
 from flask import Flask, jsonify
-from flask_cors import CORS
 from os import getenv
-
 from api.v1.views import app_views
 from models import storage
 
 
 # Flask Application Variable: app
 app = Flask(__name__)
-
-CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 # register the blueprint app_views
 app.register_blueprint(app_views)
@@ -49,4 +45,6 @@ host = environment variable HBNB_API_HOST or 0.0.0.0 if not defined
 port = environment variable HBNB_API_PORT or 5000 if not defined
 """
 if __name__ == "__main__":
-    app.run(getenv("HBNB_API_HOST"), getenv("HBNB_API_PORT"))
+    HOST = getenv('HBNB_API_HOST', '0.0.0.0')
+    PORT = int(getenv('HBNB_API_PORT', 5000))
+    app.run(hosts=HOST, port=PORT, threaded=True)
